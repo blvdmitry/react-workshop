@@ -1,0 +1,26 @@
+.root {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	background: #576574;
+}
+
+.inner {
+	width: 400px;
+	height: 640px;
+	background: #131313;
+	border-radius: 16px;
+	overflow: hidden;
+	color: #fff;
+	box-shadow: 0 8px 16px rgba(0, 0 , 0, 0.36);
+}
+
+.header {
+	padding: 16px;
+	text-align: center;
+}
+
+.content {
+	padding: 16px;
+}
