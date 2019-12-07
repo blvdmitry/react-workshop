@@ -7,10 +7,8 @@ import s from './AccountsList.module.css';
 class AccountsList extends React.Component {
   state = {
     data: [],
-    resizing: false,
+    size: window.innerWidth,
   };
-
-  timer;
 
   componentDidMount() {
     fetchEndpoint('accounts')
@@ -26,18 +24,11 @@ class AccountsList extends React.Component {
   }
 
   handleResize = () => {
-    if (this.timer) clearTimeout(this.timer);
-
-    this.setState({ resizing: true });
-
-    this.timer = setTimeout(() => {
-      console.log('false');
-      this.setState({ resizing: false });
-    }, 3000);
+    this.setState({ size: window.innerWidth });
   };
 
   render() {
-    const { data, resizing } = this.state;
+    const { data, size } = this.state;
 
     if (!data.length) return <div className={s.loader}>Loading</div>;
 
@@ -55,7 +46,7 @@ class AccountsList extends React.Component {
           ))
         }
 
-        <Toast text="I'm already mobile. Stop it!" active={resizing} />
+        <Toast text="Now we're talking!" active={size < 540} />
       </React.Fragment>
     );
   }
