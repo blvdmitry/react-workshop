@@ -1,0 +1,12 @@
+.item {
+	border-bottom: 1px solid #333;
+}
+
+.item:first-child {
+	border-top: 1px solid #333;
+}
+
+.loader {
+	padding: 16px;
+	text-align: center;
+}

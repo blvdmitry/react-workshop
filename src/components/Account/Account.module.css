@@ -1,0 +1,82 @@
+.root {
+	position: relative;
+}
+
+.inner {
+	padding: 16px;
+	background: #1b1b1b;
+	display: flex;
+	width: 100%;
+	box-sizing: border-box;
+	color: inherit;
+	border: none;
+	text-align: left;
+	font-size: 14px;
+	outline: none;
+	cursor: pointer;
+	transition: transform 0.2s ease-in-out;
+	position: relative;
+	z-index: 1;
+}
+
+.inner:focus {
+	background: #212121;
+}
+
+.main {
+	flex-grow: 1;
+}
+
+.side {
+	flex-shrink: 0;
+	padding-left: 16px;
+}
+
+.title {}
+
+.subtitle {
+	margin-top: 8px;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: bold;
+	color: #bdbdbd;
+}
+
+.balance {
+	font-size: 12px;
+}
+
+.actions {
+	position: absolute;
+	height: 100%;
+	right: 0;
+	top: 0;
+	width: 120px;
+	display: flex;
+	flex-direction: column;
+}
+
+.action {
+	width: 100%;
+	background: none;
+	border: none;
+	outline: none;
+	color: #fff;
+	height: 50%;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: bold;
+	border-top: 1px solid #333;
+}
+
+.action:first-child {
+	border-top: none;
+}
+
+.action:focus {
+	background: #212121;
+}
+
+.rootActive .inner {
+	transform: translateX(-120px);
+}
