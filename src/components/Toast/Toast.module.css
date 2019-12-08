@@ -2,14 +2,9 @@
 	position: absolute;
 	left: 0;
 	right: 0;
+	bottom: 0;
 	color: #fff;
 	background: #212121;
 	border-radius: 3px;
 	padding: 16px;
-	top: 100%;
-	transition: transform 0.2s ease-in-out;
-}
-
-.rootActive {
-	transform: translateY(-100%);
 }

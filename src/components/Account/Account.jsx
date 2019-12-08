@@ -3,11 +3,17 @@ import classnames from 'classnames';
 import s from './Account.module.css';
 
 const Account = (props) => {
-  const { title, accountNumber, balance } = props;
+  const { title, accountNumber, balance, onTransfer } = props;
   const [active, setActive] = React.useState(false);
   const rootClassName = classnames(s.root,  active && s.rootActive);
 
   const handleClick = () => setActive(!active);
+
+  const handleTransfer = (e) => {
+    e.preventDefault();
+    setActive(false);
+    onTransfer(e);
+  };
 
   return (
     <div className={rootClassName}>
@@ -22,7 +28,7 @@ const Account = (props) => {
       </button>
 
       <div className={s.actions}>
-        <button type="button" className={s.action}>Transfer</button>
+        <button type="button" className={s.action} onClick={handleTransfer}>Transfer</button>
         <button type="button" className={s.action}>Details</button>
       </div>
     </div>
