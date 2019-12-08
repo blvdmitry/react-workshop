@@ -1,13 +1,11 @@
 import React from 'react';
-import classnames from 'classnames';
 import s from './Toast.module.css';
 
 class Toast extends React.Component {
   render() {
-    const { active, text } = this.props;
-    const rootClassName = classnames(s.root, active && s.rootActive);
+    const { text } = this.props;
 
-    return <div className={rootClassName}>{ text }</div>;
+    return <div className={s.root}>{ text }</div>;
   }
 }
 
