@@ -38,7 +38,7 @@ const AccountsList = () => {
         ))
       }
 
-      <Toast text="Now we're talking!" active={size < 540} />
+      { size < 540 && <Toast text="Now we're talking!" /> }
     </React.Fragment>
   );
 };
