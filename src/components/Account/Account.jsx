@@ -1,9 +1,10 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import classnames from 'classnames';
 import s from './Account.module.css';
 
 const Account = (props) => {
-  const { title, accountNumber, balance, onTransfer } = props;
+  const { title, accountNumber, balance, onTransfer, id } = props;
   const [active, setActive] = React.useState(false);
   const rootClassName = classnames(s.root,  active && s.rootActive);
 
@@ -29,7 +30,7 @@ const Account = (props) => {
 
       <div className={s.actions}>
         <button type="button" className={s.action} onClick={handleTransfer}>Transfer</button>
-        <button type="button" className={s.action}>Details</button>
+        <NavLink className={s.action} to={`/account/${id}/`}>Details</NavLink>
       </div>
     </div>
   );

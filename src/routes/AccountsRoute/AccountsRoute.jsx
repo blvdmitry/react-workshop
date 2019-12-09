@@ -1,11 +1,11 @@
 import React from 'react';
 import { fetchEndpoint } from '../../api';
-import Account from '../Account';
-import Toast from '../Toast';
-import Confirmation from '../Confirmation';
-import s from './AccountsList.module.css';
+import Account from '../../components/Account';
+import Toast from '../../components/Toast';
+import Confirmation from '../../components/Confirmation';
+import s from './AccountsRoute.module.css';
 
-const AccountsList = () => {
+const AccountsRoute = () => {
   const [data, setData] = React.useState([]);
   const [size, setSize] = React.useState(window.innerWidth);
   const [transferId, setTransferId] = React.useState(null);
@@ -40,6 +40,7 @@ const AccountsList = () => {
         data.map(item => (
           <div className={s.item} key={item.id}>
             <Account
+              id={item.id}
               title={item.title}
               balance={` ${item.amount} ${item.currency}`}
               accountNumber={item.iban}
@@ -55,4 +56,4 @@ const AccountsList = () => {
   );
 };
 
-export default AccountsList;
+export default AccountsRoute;

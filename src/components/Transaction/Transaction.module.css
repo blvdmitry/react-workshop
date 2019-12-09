@@ -1,0 +1,15 @@
+.root {
+	display: flex;
+	align-items: center;
+	padding: 16px;
+	color: #fff;
+	background: #1b1b1b;
+}
+
+.title {
+	flex-grow: 1;
+}
+
+.amount {
+	padding-left: 16px;
+}

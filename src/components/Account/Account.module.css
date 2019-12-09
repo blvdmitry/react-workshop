@@ -67,6 +67,10 @@
 	font-size: 12px;
 	font-weight: bold;
 	border-top: 1px solid #333;
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .action:first-child {
