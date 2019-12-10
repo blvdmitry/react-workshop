@@ -1,25 +1,26 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { confirmationActions } from '../../store/confirmation';
 import { fetchEndpoint } from '../../api';
 import Account from '../../components/Account';
 import Toast from '../../components/Toast';
-import Confirmation from '../../components/Confirmation';
 import s from './AccountsRoute.module.css';
+import Confirmation from "../../components/Confirmation";
 
 const AccountsRoute = () => {
+  const dispatch = useDispatch();
+  const confirmationId = useSelector(state => {
+    return state.confirmation.id;
+  });
   const [data, setData] = React.useState([]);
   const [size, setSize] = React.useState(window.innerWidth);
-  const [transferId, setTransferId] = React.useState(null);
 
   const handleResize = () => {
     setSize(window.innerWidth);
   };
 
-  const handleConfirmationFinish = () => {
-    setTransferId(null);
-  };
-
   const handleTransfer = (item) => {
-    setTransferId(item.id);
+    dispatch(confirmationActions.show(item.id));
   };
 
   React.useEffect(() => {
@@ -42,7 +43,7 @@ const AccountsRoute = () => {
             <Account
               id={item.id}
               title={item.title}
-              balance={` ${item.amount} ${item.currency}`}
+              balance={`${item.amount} ${item.currency}`}
               accountNumber={item.iban}
               onTransfer={() => handleTransfer(item)}
             />
@@ -51,7 +52,7 @@ const AccountsRoute = () => {
       }
 
       { size < 540 && <Toast text="Now we're talking!" /> }
-      { !!transferId && <Confirmation onFinish={handleConfirmationFinish} key={transferId} /> }
+      { confirmationId && <Confirmation id={confirmationId} /> }
     </React.Fragment>
   );
 };

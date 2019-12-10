@@ -1,8 +1,12 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { confirmationActions } from '../../store/confirmation';
 import s from './Confirmation.module.css';
 
 const Confirmation = (props) => {
-  const { onFinish } = props;
+  const { id } = props;
+  const dispatch = useDispatch();
+  const active = useSelector(state => state.confirmation.id === id);
   const fieldsRef = React.useRef([]);
   const fieldsLength = 4;
 
@@ -15,12 +19,14 @@ const Confirmation = (props) => {
 
     if (!value) return;
     if (index === fieldsLength - 1) {
-      onFinish();
+      dispatch(confirmationActions.hide());
       return;
     }
 
     fieldsRef.current[index + 1].focus();
   };
+
+  if (!active) return null;
 
   return (
     <div className={s.root}>
