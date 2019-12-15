@@ -1,14 +1,19 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import classnames from 'classnames';
+import { AnalyticsContext } from '../Analytics';
 import s from './Account.module.css';
 
 const Account = (props) => {
   const { title, accountNumber, balance, onTransfer, id } = props;
   const [active, setActive] = React.useState(false);
+  const { sendClick } = React.useContext(AnalyticsContext);
   const rootClassName = classnames(s.root,  active && s.rootActive);
 
-  const handleClick = () => setActive(!active);
+  const handleClick = () => {
+    setActive(!active);
+    sendClick();
+  };
 
   const handleTransfer = (e) => {
     e.preventDefault();
