@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { confirmationActions } from '../../store/confirmation';
-import { fetchEndpoint } from '../../api';
+import useApi from '../../hooks/useApi';
 import Account from '../../components/Account';
 import Toast from '../../components/Toast';
 import s from './AccountsRoute.module.css';
@@ -12,7 +12,7 @@ const AccountsRoute = () => {
   const confirmationId = useSelector(state => {
     return state.confirmation.id;
   });
-  const [data, setData] = React.useState([]);
+  const data = useApi('accounts');
   const [size, setSize] = React.useState(window.innerWidth);
 
   const handleResize = () => {
@@ -24,16 +24,12 @@ const AccountsRoute = () => {
   };
 
   React.useEffect(() => {
-    fetchEndpoint('accounts').then(data => setData(data));
-  }, []);
-
-  React.useEffect(() => {
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  if (!data.length) return <div className={s.loader}>Loading</div>;
+  if (!data) return <div className={s.loader}>Loading</div>;
 
   return (
     <React.Fragment>

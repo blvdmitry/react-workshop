@@ -1,18 +1,13 @@
 import React from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { fetchEndpoint } from '../../api';
+import useApi from '../../hooks/useApi';
 import Transaction from '../../components/Transaction';
 import s from './AccountRoute.module.css';
 
 const AccountRoute = () => {
   const { id } = useParams();
   const history = useHistory();
-  const [data, setData] = React.useState(null);
-
-  React.useEffect(() => {
-    fetchEndpoint('account', id)
-      .then(data => setData(data));
-  });
+  const data = useApi('account', id);
 
   const handleBackClick = () => {
     history.goBack();
